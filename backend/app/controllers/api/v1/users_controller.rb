@@ -14,7 +14,6 @@ module Api
             end
 
             def login
-                puts("WAWAW")
                 @user = User.find_by(email: params[:email])
                 if @user && @user.authenticate(params[:password])
                     token = encode_token({user_id: @user.id})
@@ -25,7 +24,6 @@ module Api
             end
 
             def auto_login
-                puts("Wakawaka")
                 render json: @user
             end        
             private
