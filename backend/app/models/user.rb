@@ -8,4 +8,6 @@ class User < ApplicationRecord
                       :length => { :minumum => 10, :maximum => 15 },
                       :allow_blank => true
     has_secure_password
+    validates :password, :length => { in: 6..30 },
+                         :presence => true
 end

@@ -9,7 +9,7 @@ module Api
                     token = encode_token({user_id: @user.id})
                     render json: {user: @user, token: token}
                 else
-                    render json: {status: 'ERROR', message: 'Invalid user name or password'}
+                    render json: {status: 'ERROR', message: 'Invalid user name or password', error: @user.errors}
                 end
             end
 
