@@ -215,6 +215,7 @@ DEPENDENCIES
   listen (~> 3.3)
   pg (~> 1.1)
   puma (~> 5.0)
+  rack
   rack-cors
   rack-mini-profiler (~> 2.0)
   rails (~> 6.1.1)
