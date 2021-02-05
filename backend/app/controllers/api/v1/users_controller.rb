@@ -7,9 +7,12 @@ module Api
                 @user = User.new(user_params)
                 if @user.save
                     token = encode_token({user_id: @user.id})
-                    render json: {user: @user, token: token}
+                    render json: {token: token}, 
+                           status: :created
                 else
-                    render json: {status: 'ERROR', message: 'Invalid user name or password', error: @user.errors}
+                    render json: {status: 'ERROR', message: 
+                                 'Invalid user name or password', error: @user.errors},
+                         status: :bad_request 
                 end
             end
 
@@ -17,9 +20,11 @@ module Api
                 @user = User.find_by(email: params[:email])
                 if @user && @user.authenticate(params[:password])
                     token = encode_token({user_id: @user.id})
-                    render json: {user: @user, token: token}
+                    render json: {token: token}, 
+                           status: :ok
                 else
-                    render json: {status: 'ERROR', message: 'Invalid user name or password'}
+                    render json: {status: 'ERROR', message: 'Invalid user name or password'}, 
+                           status: :bad_request
                 end
             end
 
