@@ -29,7 +29,7 @@ module Api
             end
 
             def auto_login
-                render json: @user
+                render json: @user, status: :ok
             end        
             private
 

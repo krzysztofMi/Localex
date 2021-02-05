@@ -4,6 +4,122 @@ info:
   title: API V1
   version: v1
 paths:
+  "/api/v1/advertisements":
+    get:
+      summary: Get all adds
+      tags:
+      - Adds
+      responses:
+        '200':
+          description: Adds return
+    post:
+      summary: Create add
+      tags:
+      - Adds
+      security:
+      - Bearer: []
+      parameters: []
+      responses:
+        '201':
+          description: Add created
+        '400':
+          description: Bad request
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                user_id:
+                  type: integer
+                name:
+                  type: string
+                type:
+                  type: string
+                  description: Free, Exchange or Pay
+                description:
+                  type: string
+                  nullable: true
+                place:
+                  type: string
+                  nullable: true
+              required:
+              - user_id
+              - name
+              - type
+  "/api/v1/advertisements/{id}":
+    parameters:
+    - name: id
+      in: path
+      required: true
+      schema:
+        type: string
+    get:
+      summary: Retrive an add
+      tags:
+      - Adds
+      responses:
+        '200':
+          description: Add found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  user_id:
+                    type: integer
+                  name:
+                    type: string
+                  type:
+                    type: string
+                  description:
+                    type: integer
+                    nullable: true
+                  place:
+                    type: string
+                required:
+                - user_id
+                - name
+                - type
+        '404':
+          description: Add not found
+    patch:
+      summary: Update add
+      tags:
+      - Adds
+      security:
+      - Bearer: []
+      parameters: []
+      responses:
+        '200':
+          description: Add updated
+        '400':
+          description: Bad request
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                type:
+                  type: string
+                description:
+                  type: string
+                  nullable: true
+                place:
+                  type: string
+                  nullable: true
+    delete:
+      summary: Delete add
+      tags:
+      - Adds
+      security:
+      - Bearer: []
+      responses:
+        '200':
+          description: Add removed
   "/api/v1/users":
     post:
       summary: Create user
@@ -71,10 +187,12 @@ paths:
         '401':
           description: Access token is missing or invalid
 servers:
-- url: http://{defaultHost}
+- url: "{defaultUrl}://{defaultHost}"
   variables:
     defaultHost:
       default: localhost:3000
+    defaultUrl:
+      default: http
 components:
   securitySchemes:
     Bearer:
