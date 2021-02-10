@@ -5,13 +5,14 @@ module Api
 
             def create
                 @user = User.new(user_params)
+                @user.role = Role.find(2)
                 if @user.save
                     token = encode_token({user_id: @user.id})
                     render json: {token: token}, 
                            status: :created
                 else
                     render json: {status: 'ERROR', message: 
-                                 'Invalid user name or password', error: @user.errors},
+                                 'Validation failed: ', error: @user.errors},
                          status: :bad_request 
                 end
             end
@@ -20,8 +21,8 @@ module Api
                 @user = User.find_by(email: params[:email])
                 if @user && @user.authenticate(params[:password])
                     token = encode_token({user_id: @user.id})
-                    render json: {token: token}, 
-                           status: :ok
+                    render json: {user: @user, token: token}, include: [:role], except: 
+                    [:password_digest], status: :ok
                 else
                     render json: {status: 'ERROR', message: 'Invalid user name or password'}, 
                            status: :bad_request
@@ -29,13 +30,14 @@ module Api
             end
 
             def auto_login
-                render json: @user, status: :ok
+                render json: {user: @user}, include: [:role], except: 
+                [:password_digest], status: :ok
             end  
         
             private
 
             def user_params
-                params.permit(:email, :nickname, :password, :phone, )
+                params.permit(:email, :nickname, :password, :phone)
             end
         end
     end

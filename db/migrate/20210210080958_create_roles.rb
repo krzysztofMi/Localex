@@ -9,7 +9,6 @@ class CreateRoles < ActiveRecord::Migration[6.1]
 
     create_table :roles do |t|
       t.column :type, :role_type, unique: true, null: false
-      t.timestamps
     end
 
     add_reference :users, :role, foreign_key: true, null: false
