@@ -1,4 +1,4 @@
-# README
+# BACKEND
 
 Localex backend. It has been developing in Ruby language with Rails framework. 
 
