@@ -17,10 +17,10 @@ describe 'Adds Api' do
             parameter name: :add, in: :body, schema: {
                 type: :object,
                 properties: {
-                    user_id: {type: :integer},
                     name: {type: :string},
                     type: {type: :string, description: 'Free, Exchange or Pay'},
                     description: {type: :string, nullable: true},
+                    price: {type: :string, nullable: true},
                     place: {type: :string, nullable: true}
                 },
                 required: [ 'user_id', 'name', 'type']

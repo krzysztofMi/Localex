@@ -1,5 +1,6 @@
 class Advertisement < ApplicationRecord
     self.inheritance_column = nil
+    belongs_to :user
     enum type: {
         free: "free",
         exchange: "exchange",

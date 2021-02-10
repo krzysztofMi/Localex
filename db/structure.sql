@@ -44,9 +44,11 @@ CREATE TABLE public.advertisements (
     name character varying NOT NULL,
     type public.advertisements_type NOT NULL,
     description text DEFAULT ''::text,
+    price character varying,
     place character varying,
     created_at timestamp(6) without time zone NOT NULL,
-    updated_at timestamp(6) without time zone NOT NULL
+    updated_at timestamp(6) without time zone NOT NULL,
+    user_id bigint NOT NULL
 );
 
 
@@ -216,6 +218,13 @@ ALTER TABLE ONLY public.users
 
 
 --
+-- Name: index_advertisements_on_user_id; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_advertisements_on_user_id ON public.advertisements USING btree (user_id);
+
+
+--
 -- Name: index_users_on_role_id; Type: INDEX; Schema: public; Owner: -
 --
 
@@ -231,6 +240,14 @@ ALTER TABLE ONLY public.users
 
 
 --
+-- Name: advertisements fk_rails_cab0b64c35; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.advertisements
+    ADD CONSTRAINT fk_rails_cab0b64c35 FOREIGN KEY (user_id) REFERENCES public.users(id);
+
+
+--
 -- PostgreSQL database dump complete
 --
 
@@ -239,6 +256,7 @@ SET search_path TO "$user", public;
 INSERT INTO "schema_migrations" (version) VALUES
 ('20210202125001'),
 ('20210203074210'),
-('20210210080958');
+('20210210080958'),
+('20210210175155');
 
 

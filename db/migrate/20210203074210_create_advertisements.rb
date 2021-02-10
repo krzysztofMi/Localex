@@ -11,6 +11,7 @@ class CreateAdvertisements < ActiveRecord::Migration[6.1]
       t.string :name, null: false
       t.column :type, :advertisements_type, null: false
       t.text :description, default: "" 
+      t.string :price
       t.string :place
       
       t.timestamps

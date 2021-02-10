@@ -1,5 +1,6 @@
 class User < ApplicationRecord
     belongs_to :role
+    has_many :advertisements
     validates :email, :presence => true,
                       :uniqueness => true,
                       :format => { with: URI::MailTo::EMAIL_REGEXP }
