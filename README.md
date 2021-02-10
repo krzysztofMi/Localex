@@ -1,24 +1,20 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Localex backend. It has been developing in Ruby language with Rails framework. 
 
-Things you may want to cover:
+* Ruby version 2.7.2
 
-* Ruby version
+* Rails version 6.1.1
 
-* System dependencies
+* Database PostgreSQL
 
-* Configuration
+Database can be initialize by rack:
+  type on your console in project directory:
+  </br></br>```rack db:create db:migrate db:seed```</br></br>
+Puma server can be start by type
+</br></br>```rails server```
+</br></br>
 
-* Database creation
+# FRONTEND
 
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+Frontend is available on https://github.com/PatrykMargasinski/LocalexFrontend, It has been writing in Angular framework.
