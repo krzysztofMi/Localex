@@ -1,4 +1,3 @@
-
 roles = [
     {type: "ADMIN"},
     {type: "USER"},
@@ -10,10 +9,10 @@ roles.each do |role|
 end
 
 users = [
-    {email: 'krzysztof@email.pl', nickname: 'krzysztof', phone: 1234567, password_digest: '123'},
-    {email: 'wojtek@email.pl', nickname: 'wojtek', phone: 1234567, password_digest: '321'}
+    {email: 'krzysztof@email.pl', nickname: 'krzysztof', password_digest: User.digest('1234567'), roles_id: 1},
+    {email: 'wojtek@email.pl', nickname: 'wojtek', password_digest: User.digest('6543210'), roles_id: 2}
 ]
 
 users.each do |user|
-    User.create(user) unless User.where(user).first
+    User.create!(user) unless User.where(user).first
 end
