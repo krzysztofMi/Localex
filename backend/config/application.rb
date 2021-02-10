@@ -14,6 +14,7 @@ module Localex
     config.debug_exception_response_format = :default
     config.debug_exception_response_format = :api
     config.autoload_paths << Rails.root.join('lib')
+    config.active_record.schema_format = :sql
     # Configuration for the application, engines, and railties goes here.
     #
     # These settings can be overridden in specific environments using the files
