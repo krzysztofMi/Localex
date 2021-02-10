@@ -8,9 +8,9 @@ class CreateAdvertisements < ActiveRecord::Migration[6.1]
     DDL
 
     create_table :advertisements do |t|
-      t.string :name
-      t.column :type, :advertisements_type
-      t.text :description
+      t.string :name, null: false
+      t.column :type, :advertisements_type, null: false
+      t.text :description, default: "" 
       t.string :place
       
       t.timestamps

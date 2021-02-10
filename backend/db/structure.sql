@@ -41,9 +41,9 @@ SET default_table_access_method = heap;
 
 CREATE TABLE public.advertisements (
     id bigint NOT NULL,
-    name character varying,
-    type public.advertisements_type,
-    description text,
+    name character varying NOT NULL,
+    type public.advertisements_type NOT NULL,
+    description text DEFAULT ''::text,
     place character varying,
     created_at timestamp(6) without time zone NOT NULL,
     updated_at timestamp(6) without time zone NOT NULL
@@ -127,13 +127,13 @@ CREATE TABLE public.schema_migrations (
 
 CREATE TABLE public.users (
     id bigint NOT NULL,
-    email character varying,
-    nickname character varying,
+    email character varying NOT NULL,
+    nickname character varying NOT NULL,
     phone numeric,
     password_digest character varying,
     created_at timestamp(6) without time zone NOT NULL,
     updated_at timestamp(6) without time zone NOT NULL,
-    roles_id bigint
+    roles_id bigint NOT NULL
 );
 
 
