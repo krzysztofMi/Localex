@@ -24,15 +24,7 @@ RSpec.configure do |config|
       paths: {},
       servers: [
         {
-          url: '{defaultUrl}://{defaultHost}',
-          variables: {
-            defaultHost: {
-              default: 'localhost:3000'
-            },
-            defaultUrl: {
-              default: 'http'
-            }
-          }
+          url: ENV["HOST"],
         }
       ],
       components: {

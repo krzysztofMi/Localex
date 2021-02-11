@@ -129,8 +129,10 @@ CREATE TABLE public.users (
     id bigint NOT NULL,
     email character varying NOT NULL,
     nickname character varying NOT NULL,
-    phone numeric,
+    phone integer,
     password_digest character varying,
+    account_active boolean DEFAULT false,
+    confirm_token character varying,
     created_at timestamp(6) without time zone NOT NULL,
     updated_at timestamp(6) without time zone NOT NULL,
     role_id bigint NOT NULL

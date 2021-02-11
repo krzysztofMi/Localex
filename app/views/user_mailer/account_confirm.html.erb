@@ -1,0 +1,19 @@
+<html>
+    <head>
+        <meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+    </head>
+    <body>
+        <h1> Witamy w localex, <%= @user.nickname %> </h1>
+        <p>
+            Rejestracja przebiegła pomyślnie,
+            twój login to: <%= @user.email %>. <br>
+        </p>
+        <p>
+            Przed zalogowaniem potwierdź swój email klikając w link poniżej <br>
+            <a href="http://localhost:3000/api/v1/users/confirm_email/<%= @user.confirm_token%>"> potwierdź </a>
+            <%# <%= link_to "confirm", confirm_email_path(@user.confirm_token, host: 'http://localhost:3000') %> 
+        </p>
+
+        <p> Dziękujemy za założenie konta i życzymy miłego dnia! </p>
+    </body>
+</html>
