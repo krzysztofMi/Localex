@@ -21,4 +21,15 @@ class User < ApplicationRecord
                                                 BCrypt::Engine.cost
         BCrypt::Password.create(string, cost: cost)
     end                    
+
+    def setConfirmationToken
+        if self.confirm_token.blank?
+            self.confirm_token = SecureRandom.urlsafe_base64.to_s
+        end
+    end
+    
+    def validateEmail
+        self.account_active = true
+        self.confirm_token = nil
+    end
 end

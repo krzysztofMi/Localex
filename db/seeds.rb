@@ -9,7 +9,7 @@ roles.each do |role|
 end
 
 users = [
-    {email: 'krzysztof@email.pl', nickname: 'krzysztof', password_digest: User.digest('1234567'), role: pRoles[0]},
+    {email: 'krzysztof@email.pl', nickname: 'krzysztof', password_digest: User.digest('123456'), role: pRoles[0]},
     {email: 'wojtek@email.pl', nickname: 'wojtek', password_digest: User.digest('6543210'), role: pRoles[1]}
 ]
 
