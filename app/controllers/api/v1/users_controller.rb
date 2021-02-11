@@ -46,13 +46,9 @@ module Api
                 if user
                     user.validateEmail
                     user.save(validate: false)
-                    #TODO
-                    #Should be set to localex login frontend website
-                    redirect_to "http://localhost:3000/"
+                    redirect_to ENV["FRONT_HOST"] + "/login?activate=true"
                 else
-                    #TODO
-                    #Should be set to localex frontend website error page    
-                    redirect_to "https://www.google.com/"
+                    redirect_to ENV["FRONT_HOST"] + "/login?activate=false"
                 end
             end
     

@@ -188,12 +188,7 @@ paths:
         '401':
           description: Access token is missing or invalid
 servers:
-- url: "{defaultUrl}://{defaultHost}"
-  variables:
-    defaultHost:
-      default: localhost:3000
-    defaultUrl:
-      default: http
+- url: http://localhost:3000
 components:
   securitySchemes:
     Bearer:
